@@ -25,6 +25,10 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("may chu mat ket noi vs client:", socket.id);
   });
+
+  socket.on("Client-send-data", (d) => {
+    console.log(d);
+  });
 });
 
 app.get("/", (req, res) => {

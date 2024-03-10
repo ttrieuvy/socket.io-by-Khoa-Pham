@@ -2,12 +2,19 @@
 <html lang="en">
   <head>
     <script src="socket.io/socket.io.js"></script>
-    <script>
-      let socket = io("127.0.0.1:3000/");
-    </script>
   </head>
   <body>
     <h1>Xin chào bạn đến với trang chủ</h1>
+    <p id="btn-clickMe">Click me</p>
     <script src="jquery.js"></script>
+    <script>
+      let socket = io("127.0.0.1:3000/");
+
+      $(document).ready(() => {
+        $("#btn-clickMe").click(() => {
+          socket.emit("Client-send-data", "Vy dep trai");
+        });
+      });
+    </script>
   </body>
 </html>
