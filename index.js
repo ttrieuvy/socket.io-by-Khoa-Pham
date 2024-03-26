@@ -28,12 +28,16 @@ io.on("connection", (socket) => {
 
   socket.on("Client-send-data", (d) => {
     console.log(d);
-    io.sockets.emit("Server-send-data", d + " global");
-    socket.emit("Server-send-data", d + " just client send");
-    socket.broadcast.emit("Server-send-data", d + " all ngoài client");
+    io.sockets.emit("Server-send-data", d);
+    // socket.emit("Server-send-data", d + " just client send");
+    // socket.broadcast.emit("Server-send-data", d + " all ngoài client");
   });
 });
 
 app.get("/", (req, res) => {
   res.render("trangchu");
+});
+
+app.get("/baitap", (req, res) => {
+  res.render("baitap");
 });

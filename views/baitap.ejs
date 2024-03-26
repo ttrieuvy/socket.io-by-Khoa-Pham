@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài tập</title>
+    <script src="socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Xin chào bạn đến với trang chủ</h1>
+    <h2 id="content"></h2>
+    <div id="container">
+      <div
+        id="btn-red"
+        style="width: 100px; height: 50px; background-color: red; color: white"
+      >
+        Click me
+      </div>
+      <div
+        id="btn-green"
+        style="
+          width: 100px;
+          height: 50px;
+          background-color: green;
+          color: white;
+        "
+      >
+        Click me
+      </div>
+      <div
+        id="btn-blue"
+        style="width: 100px; height: 50px; background-color: blue; color: white"
+      >
+        Click me
+      </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+      let socket = io("127.0.0.1:3000/");
+
+      $(document).ready(() => {
+        $("#btn-red").click(() => {
+          socket.emit("Client-send-data", "red");
+        });
+        $("#btn-blue").click(() => {
+          socket.emit("Client-send-data", "blue");
+        });
+        $("#btn-green").click(() => {
+          socket.emit("Client-send-data", "green");
+        });
+      });
+
+      socket.on("Server-send-data", (dataS) => {
+        console.log(dataS);
+        // $("#container").append(dataS);
+        $("#container").css("background-color", dataS);
+      });
+    </script>
+  </body>
+</html>

@@ -113,3 +113,5 @@ socket.on("Client-send-data", (d) => {
 
   });
 ```
+
+- Mỗi lần tắt trình duyệt nhưng vẫn muốn
